@@ -55,10 +55,12 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+      direction:rtl;
 }
 
 body {
   margin: 0;
+  direction:rtl;
 }
 
 a:focus {
@@ -137,6 +139,7 @@ sub {
 
 img {
   border: 0;
+  width:200px;
 }
 
 svg:not(:root) {
@@ -473,9 +476,10 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, David, sans-serif;
   font-weight: 500;
   line-height: 1.1;
+ 
 }
 
 h1 small,

@@ -1,0 +1,26 @@
+﻿@model BuyForU.Models.Product
+
+<div style="width:200px">
+</div>
+    @Model.Title<br />
+    @Model.Date<br />
+
+@if (Model.Picture1 != null)
+{
+    <img src='@Url.Action("ShowOnHome", "Home", new { id = Model.ID })' />
+        <br />
+}
+
+
+@Model.ShortDescription<br />
+
+@Model.Price $<br />
+
+@Html.ActionLink("פרטים נוספים", "Details", "Home", new { id = Model.ID }, string.Empty)<br />
+
+@if (User.Identity.IsAuthenticated && Model.Status == BuyForU.Models.State.ForSale)
+{
+    @Html.ActionLink("הוסף לסל", "AddToCard", "ShoppingCard", new { id = Model.ID }, string.Empty)
+}
+
+

@@ -1,0 +1,9 @@
+﻿@model BuyForU.Models.Product
+
+<div>
+    @Html.CheckBoxFor(chkB => chkB.IsInCard, new { dataid = Model.ID, @class = "checkboxes" })
+
+    @Html.ActionLink(@Model.Title, "Details", "Home", new { id = Model.ID }, "")
+    
+    <span>@Html.DisplayNameFor(model => model.Price) : @Model.Price </span>$<br />
+</div>

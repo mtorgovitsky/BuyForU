@@ -1,0 +1,33 @@
+﻿@model List<BuyForU.Models.Product>
+
+<h3>דף הבית</h3>
+
+@ViewBag.Message
+
+<div>@Html.ActionLink("הצג לפי תאריך", "OrderByDate", "Home")</div>
+
+<div>@Html.ActionLink("הצג לפי הכותרות", "OrderByTitle", "Home")</div>
+
+@{
+    <table>
+        @{
+            int itemsForOneRow = 4;
+            if (Model != null)
+            {
+                int allItems = Model.Count();
+
+                for (int i = 0, g = 0; i < allItems; i++)
+                {
+                    <tr>
+                        @for (int j = 0; j < itemsForOneRow && g < allItems; g++, j++)
+                        {
+                            <td>
+                                @Html.Partial("ShowOnHome", Model[g])
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        }
+    </table>
+}

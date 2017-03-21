@@ -14,12 +14,19 @@ namespace BuyForU.Controllers
         {
             using (DB context = new DB())
             {
-                User tmp = context.Users.Where(u => u.UserName == user.UserName
-                    && u.Password == user.Password).FirstOrDefault();
-                if (tmp != null)
+                if (!ModelState.IsValid)
                 {
-                    System.Web.Security.FormsAuthentication.SetAuthCookie
-                        ($"{tmp.FirstName} {tmp.LastName}", true);
+                    return View(user);
+                }
+                else
+                {
+                    User checkUser = context.Users.Where(u => u.UserName == user.UserName
+                        && u.Password == user.Password).FirstOrDefault();
+                    if (checkUser != null)
+                    {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie
+                            ($"{checkUser.FirstName} {checkUser.LastName}", true);
+                    }
                 }
                 return RedirectToAction("Index", "Home");
             }

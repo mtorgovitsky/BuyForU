@@ -1,0 +1,25 @@
+﻿
+<div>
+    @Html.ActionLink("מסך ראשי", "Home", "Home")
+</div>
+
+    <div>
+        @Html.ActionLink("רישום פרטים אישים", "EditCurrentUser", "User")
+    </div>
+
+<div>
+    @Html.ActionLink("אודותינו", "About", "Home")
+</div>
+<div>
+    @Html.ActionLink("סל קניות", "Card", "ShoppingCard")
+</div>
+<div>
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        @Html.ActionLink("פרסום מודעה", "SubmitData", "Product")
+
+    }
+
+</div>
+@Html.ActionLink("אודותינו", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })

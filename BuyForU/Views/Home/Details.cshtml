@@ -1,0 +1,72 @@
+﻿@model BuyForU.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>מרטים נוספים</h2>
+
+<div>
+    <h4>פרטי המוצר:</h4>
+    
+    <h5>@Html.DisplayNameFor(model => model.Title)</h5>
+    @Html.DisplayFor(model => model.Title)
+
+    <h5>@Html.DisplayNameFor(model => model.ShortDescription)</h5>
+    @Html.DisplayFor(model => model.ShortDescription)
+
+
+
+
+    <h5>@Html.DisplayNameFor(model => model.Date)</h5>
+    @Html.DisplayFor(model => model.Date)
+
+
+
+    <h5>@Html.DisplayNameFor(model => model.Price)</h5>
+    @Html.DisplayFor(model => model.Price) $
+
+    <div>
+        @if (Model.Picture1 != null)
+        {
+            <img src='@Url.Action("ShowOnHome", "Home", new { id = Model.ID })' />
+        }
+        @if (Model.Picture2 != null)
+        {
+            <img src='@Url.Action("ShowSecondPicture", "Home", new { id = Model.ID })' />
+        }
+        @if (Model.Picture3 != null)
+        {
+            <img src='@Url.Action("ShowThirdPicture", "Home", new { id = Model.ID })' />
+        }
+    </div>
+
+    <h5>@Html.DisplayNameFor(model => model.LongDescription)</h5>
+    @Html.DisplayFor(model => model.LongDescription)
+
+
+</div>
+
+
+<div>
+    <h4>  פרטי המפרסם:</h4>
+    
+    <h5>@Html.DisplayNameFor(model => model.Owner.UserName)</h5>
+    @Html.DisplayFor(model => model.Owner.UserName)
+
+
+
+    <h5>@Html.DisplayNameFor(model => model.Owner.Email)</h5>
+    @Html.DisplayFor(model => model.Owner.Email)
+    
+    <h5>@Html.DisplayNameFor(model => model.Owner.BirthDate) - @Html.DisplayFor(model => model.Owner.BirthDate)</h5>
+</div>
+
+
+<p>
+    @if (User.Identity.IsAuthenticated && Model.Status == BuyForU.Models.State.ForSale)
+    {
+        @Html.ActionLink("הוסף לסל", "AddToCart", "ShoppingCart", new { id = Model.ID }, null)<br />
+    }
+    @Html.ActionLink("דף הבית", "Home", "Home")
+</p>
