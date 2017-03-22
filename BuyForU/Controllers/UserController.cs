@@ -85,14 +85,14 @@ namespace BuyForU.Controllers
                 else
                 {
 
-                    //   TRY TO FIX     //
+                    //      TRY TO FIX     //
                     chkUser.FirstName = user.FirstName;
                     chkUser.LastName = user.LastName;
                     chkUser.BirthDate = user.BirthDate;
                     chkUser.Email = user.Email;
                     chkUser.UserName = user.UserName;
                     chkUser.Password = user.Password;
-                    //   TRY TO FIX     //
+                    //      TRY TO FIX     //
 
 
                     //context.Users.AddOrUpdate(user);
@@ -107,9 +107,11 @@ namespace BuyForU.Controllers
             return View("EditUser", new User());
 
         }
+
         public ActionResult EditUser()
         {
-            var user = context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name);
+            User user = context.Users
+                .SingleOrDefault(u => u.UserName == User.Identity.Name);
 
             if (user != null)
             {
