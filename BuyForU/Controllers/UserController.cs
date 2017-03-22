@@ -1,6 +1,7 @@
 ﻿using BuyForU.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -58,13 +59,18 @@ namespace BuyForU.Controllers
         {
             if (ModelState.IsValid)
             {
+                User chkUser = context.Users
+                        .Where(User => User.UserName == user.UserName)
+                        .FirstOrDefault();
+
                 if (!User.Identity.IsAuthenticated)
                 {
-                    var ExistsUser = context.Users.Where(User => User.UserName == user.UserName).FirstOrDefault();
-                    if (ExistsUser == null)
+                    if (chkUser == null)
                     {
                         context.Users.Add(user);
+
                         context.SaveChanges();
+
                         ViewBag.Message = "פרטי משתמש נקלטו בהצלחה";
 
                         return View("EditUser");
@@ -78,7 +84,18 @@ namespace BuyForU.Controllers
                 }
                 else
                 {
-                    context.Users.AddOrUpdate(user);
+
+                    //   TRY TO FIX     //
+                    chkUser.FirstName = user.FirstName;
+                    chkUser.LastName = user.LastName;
+                    chkUser.BirthDate = user.BirthDate;
+                    chkUser.Email = user.Email;
+                    chkUser.UserName = user.UserName;
+                    chkUser.Password = user.Password;
+                    //   TRY TO FIX     //
+
+
+                    //context.Users.AddOrUpdate(user);
 
                     context.SaveChanges();
 
