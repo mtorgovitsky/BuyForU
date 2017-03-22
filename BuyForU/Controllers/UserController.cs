@@ -84,18 +84,13 @@ namespace BuyForU.Controllers
                 }
                 else
                 {
-
-                    //      TRY TO FIX     //
                     chkUser.FirstName = user.FirstName;
                     chkUser.LastName = user.LastName;
                     chkUser.BirthDate = user.BirthDate;
                     chkUser.Email = user.Email;
                     chkUser.UserName = user.UserName;
                     chkUser.Password = user.Password;
-                    //      TRY TO FIX     //
-
-
-                    //context.Users.AddOrUpdate(user);
+                    chkUser.ConfirmPassword = user.ConfirmPassword;
 
                     context.SaveChanges();
 
