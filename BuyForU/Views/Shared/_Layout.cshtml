@@ -18,7 +18,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header navbar-right">
                 @Html.ActionLink("אודותינו", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -26,13 +26,13 @@
                 {
                     @Html.ActionLink("פרסם מודעה", "SubmitData", "Product", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("עדכון פרטים אישים", "EditUser", "User", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("סל הקניות שלי", "Card", "ShoppingCard", new { area = "" }, new { @class = "navbar-brand" })
                 }
                 else
                 {
                     @Html.ActionLink("רישום פרטים אישים", "EditUser", "User", new { area = "" }, new { @class = "navbar-brand" })
                 }
 
-                @Html.ActionLink("סל הקניות שלי", "Cart", "ShoppingCart", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("דף הבית", "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>

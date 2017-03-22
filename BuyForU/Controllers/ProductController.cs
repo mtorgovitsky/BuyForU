@@ -39,7 +39,7 @@ namespace BuyForU.Controllers
                 p.Date = DateTime.Now;
                 context.Products.Add(p);
                 context.SaveChanges();
-                ViewBag.Message = "File uploaded successfully";
+                ViewBag.Message = "העלאת הקובץ הצליחה";
 
                 return RedirectToAction("Home", "Home");
 

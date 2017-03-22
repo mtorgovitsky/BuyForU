@@ -16,7 +16,7 @@
     </tr>
 </table><br />
 
-<div>   סך הכל לתשלום:<span id="TotalPrice">$@price</span></div><br />
+<div> סך הכל לתשלום:<span id="TotalPrice">$@price</span></div><br />
 
 
 @if (price > 0)
@@ -37,12 +37,15 @@
     $(".checkboxes").change(function () {
         var inputBox = event.target;
         $.ajax({
-            url: "/ShoppingCart/RemoveFromCart/" + $(event.target).attr('dataid'),
+            url: "/ShoppingCard/RemoveFromCard/" + $(event.target).attr('dataid'),
             success: function (data) {
                 var totalprice = document.getElementById('TotalPrice');
+
                 totalprice.innerHTML = (parseFloat(totalprice.innerHTML) - data).toFixed(3);
-                if(parseFloat(totalprice.innerHTML)<0.01)
+
+                if (parseFloat(totalprice.innerHTML) < 0.01)
                     $(".BuyButton").remove();
+
                 $(inputBox).parent().remove();
             }
         });

@@ -22,8 +22,8 @@ namespace BuyForU.Models
 
         [Required(ErrorMessage = "נא לכתוב תאריך לידה")]
         [DisplayName("תאריך לידה")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Range(typeof(DateTime), "1/1/1900", "01/01/2014", ErrorMessage = "שימוש באתר מגיל בר מצווה בלבד")]
         public DateTime BirthDate { get; set; }
 
