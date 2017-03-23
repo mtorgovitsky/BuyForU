@@ -22,7 +22,14 @@ namespace BuyForU.Controllers
 
             List<Product> list;
 
-            list = context.Products.Where(p => p.Status != State.Sold).ToList();
+            try
+            {
+                list = context.Products.Where(p => p.Status != State.Sold).ToList();
+            }
+            catch (Exception)
+            {
+                return HttpNotFound();
+            }
 
             return View(list);
         }
