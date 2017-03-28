@@ -7,7 +7,7 @@ namespace BuyForU.Models
     public class BuyForUDB : DbContext
     {
         public BuyForUDB()
-            : base("name=DB")
+            : base("name=BuyForUDB")
         {
             Database.CreateIfNotExists();
         }
